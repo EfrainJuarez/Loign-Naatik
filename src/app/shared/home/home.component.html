@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<p *ngIf="! userLoginOn">Usuario no autenticado!</p>
+
+<p *ngIf="userLoginOn">Usuario autenticado</p>
+
+
+<div *ngIf="userLoginOn">
+<p>token: {{userData?.token}}</p>
+</div>
+
+<button mat-raised-button color="warn" (click)="isTokenExpired(userData?.token)">Warn</button>

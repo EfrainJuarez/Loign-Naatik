@@ -1,0 +1,55 @@
+.login-card{
+    height: 100vh;
+    width: 35vw;
+}
+.login-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Satoshi';
+  
+    mat-card-header{
+        display: flex;
+        justify-content: center;
+        .title{
+            font-weight: 750;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom:25%;
+        }
+        .subtitle{
+            font-size: 1.7rem;
+        }
+    }
+    mat-card-content{
+    height: 30%;
+
+    }
+
+    .login-form{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    mat-form-field{
+        font-size: 1.1rem;
+        width:85%;
+}
+.login{
+    width:85%;
+    height:  17%;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+}
+
+mat-divider{
+    margin-top: 2.5%;
+}

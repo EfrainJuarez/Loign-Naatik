@@ -1,0 +1,44 @@
+<mat-card class="login-card mat-app-background" >
+    <div class="login-container">
+        <mat-card-header>
+            <mat-card-title class="title">Iniciar Sesion</mat-card-title>
+            <mat-card-subtitle class="subtitle">Bienvenido de nuevo</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+                <form [formGroup]="loginForm" class="login-form">
+                    <mat-form-field>
+                        <mat-label>Usuario</mat-label>
+                        <input formControlName="email" matInput #input placeholder="Ex. EfrainJM" />
+                        <mat-error *ngIf="user.hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                          <mat-error *ngIf="user.hasError('email') && !user.hasError('required')">
+                            Please enter a valid email address
+                          </mat-error>
+                    </mat-form-field>
+
+
+                    <mat-form-field>
+                        <mat-label>Contraseña</mat-label>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{ hide ? "visibility_off" : "visibility"
+                                }}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="password.hasError('required')">
+                            Email is <strong>required</strong>
+                          </mat-error>
+                    </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary" (click)="login()" class="login">
+                        Log In
+                    </button>
+                    
+                </form>
+            <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-footer>
+            <p>Don´t have an account? <a routerLink="/auth/register">Sign up</a></p>
+        </mat-card-footer>
+    </div>
+</mat-card>
