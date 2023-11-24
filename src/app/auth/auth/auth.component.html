@@ -1,0 +1,18 @@
+<div class="main-container mat-typography">
+    <div class="left-side">
+        <div class="info">
+            <p class="mat-typography" [ngClass]="{ 'typing-effect': true, 'fade-out': fading }">
+                {{ currentText }}<span class="typing-indicator">|</span>
+              </p>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="logo">
+            <img src="../../../../assets/img/logo.png">
+        </div>
+        <div [@routeAnimations]="getRouteAnimationData()">
+            <router-outlet></router-outlet>
+          </div>
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+
+
+@include mat.core();
+$primary-color:(
+    50 : #e0efff,
+    100 : #b3d7ff,
+    200 : #80bdff,
+    300 : #4da3ff,
+    400 : #268fff,
+    500 : #007bff,
+    600 : #0073ff,
+    700 : #0068ff,
+    800 : #005eff,
+    900 : #004bff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$my-palette-primary: mat.define-palette($primary-color);
+$my-accent: mat.define-palette(mat.$orange-palette, 500);
+$kids-typography: mat.define-typography-config(
+    $font-family: 'Satoshi',
+  );
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-palette-primary,
+   accent: $my-accent,
+ ),
+ typography: $kids-typography,
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);

@@ -1,0 +1,119 @@
+$primary-color: #007bff;
+$font-size-large: 3rem;
+$font-size-medium: 1.5rem;
+$font-weight-bold: bold;
+
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.typing-effect {
+  width: 60vw;
+  height: auto;
+  margin: 0 auto;
+  line-height: 1.1;
+    overflow: hidden;
+    word-wrap: break-word;
+    transition: opacity 1s;
+  }
+  .fade-out {
+    opacity: 0;
+  }
+  .text-hidden {
+    opacity: 0;
+  }
+  .typing-indicator {
+    display: inline-block;
+    width: 0.5em; /* Ancho del indicador */
+    animation: blink 0.8s infinite; /* Animación de parpadeo */
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .main-container{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    
+}
+.left-side,
+.right-side {
+  display: flex;
+  flex-direction: column;
+}
+.left-side{
+    justify-content: center;
+    width: 65%;
+    background-image: url('../../../assets/img/Vector.svg');
+    
+
+    p{
+      font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Satoshi';
+  }
+}
+
+.right-side{
+    width: 35%;
+    align-items: center;
+}
+.logo{
+    width: 35%;
+    display: flex;
+    position: absolute;
+    z-index: 100;
+    justify-content: flex-end;
+    img{
+        width: 17%;
+    }
+}
+
+/* Estilos para pantallas más pequeñas, como smartphones */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas más pequeñas */
+  }
+
+  .left-side {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    height: 50%;
+    order: 2; /* Cambia el orden del lado izquierdo para que esté abajo */
+    
+  }
+  .logo{
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid red;
+    width: 100%;
+    img{
+      width: 12%;
+      height: auto;
+    }
+  }
+  .right-side {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    order: 1; /* Cambia el orden del lado derecho para que esté arriba */
+  }
+  .typing-effect {
+  width: 90%;
+  height: auto;
+  border: 1px solid red;
+  margin: 0 auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    transition: opacity 1s;
+
+  }
+}

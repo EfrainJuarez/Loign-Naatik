@@ -1,0 +1,93 @@
+<mat-card class="login-card">
+    <div class="login-container">
+        <mat-card-header>
+
+            <mat-card-title class="title">Registrate en ICH</mat-card-title>
+            <mat-card-subtitle class="subtitle">Crea tu cuenta</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="login-form">
+                <mat-stepper linear #stepper  class="stepperForm">
+                    <mat-step [stepControl]="userDataForm" [editable]="true">
+                        <form [formGroup]="userDataForm">
+                            <ng-template matStepLabel class="stepperHeader">Datos Personales</ng-template>
+                            <mat-form-field>
+                                <mat-label>Nombre</mat-label>
+                                <input matInput formControlName="username" placeholder="Nombre" (input)="letterValidation($event, 'name')"
+                                    required appCapitalize>
+                            </mat-form-field>
+                            <div class="lastnameContainer">
+                            <mat-form-field class="lastName">
+                                <mat-label>Apellido Paterno</mat-label>
+                                <input matInput formControlName="apellidoPa" placeholder="Apellido Paterno" (input)="letterValidation($event, 'lastname1')"
+                                    required appCapitalize>
+                            </mat-form-field>
+                            <mat-form-field class="lastName">
+                                <mat-label>Apellido Materno</mat-label>
+                                <input matInput formControlName="apellidoMa" placeholder="Apellido Materno" (input)="letterValidation($event, 'lastname2')"
+                                    required appCapitalize>
+                            </mat-form-field>
+                        </div>
+                            <mat-form-field>
+                                <mat-label>Fecha de nacimiento</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" [max]="maxdate">
+                                <mat-hint style="color: #fff;">MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker startView="multi-year" [startAt]="startDate" ></mat-datepicker >
+                            </mat-form-field>
+                            <div>
+                                <button mat-flat-button color="accent" matStepperNext>Siguiente</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="userAccountForm" [editable]="true">
+                        <form [formGroup]="userAccountForm">
+                            <ng-template matStepLabel  class="stepperHeader">Datos de la cuenta</ng-template>
+                            <mat-form-field>
+                                <mat-label>Usuario</mat-label>
+                                <input formControlName="email" matInput #input placeholder="Ex. EfrainJM" />
+                                <mat-error *ngIf="email.hasError('required')">
+                                    Email is <strong>required</strong>
+                                  </mat-error>
+                                  <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                                    Please enter a valid email address
+                                  </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Contraseña</mat-label>
+                                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide">
+                                    <mat-icon>{{ hide ? "visibility_off" : "visibility"
+                                        }}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="password.hasError('required')">
+                                    Email is <strong>required</strong>
+                                  </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Numero de telefono</mat-label>
+                                <input matInput formControlName="phone" placeholder="7655454124" (input)="numberValidation($event, 'lastname1')"
+                                    required>
+                            </mat-form-field>
+        
+                            <div>
+                                <button mat-flat-button color="accent" matStepperPrevious>Atras</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                </mat-stepper>
+                <!-- <mat-checkbox class="check-box" color="primary">I agree with ICH Terms of Service, Privacy Policy, and
+                    default Notification Settings.</mat-checkbox> -->
+                
+            </div>
+            <button mat-raised-button color="primary" class="register-button" [disabled]="!isFormFilled()" (click)="register()">Registrarse</button>
+        </mat-card-content>
+        <mat-card-footer>
+            <mat-divider></mat-divider>
+            <p>Already have a account? <a routerLink="/auth/login">Inicia sesion</a></p>
+        </mat-card-footer>
+    </div>
+</mat-card>
