@@ -10,6 +10,7 @@ import { user } from 'src/app/services/auth/login/user';
 export class HomeComponent implements OnInit {
   userLoginOn: boolean = false;
   userData?: user;
+  
 
   constructor(private loginService: LoginService, private router: Router) { }
 

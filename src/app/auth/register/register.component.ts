@@ -1,8 +1,10 @@
-
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms'
 import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/services/auth/register/register.service';
+import { registerRequest } from 'src/app/services/auth/register/registerRequest';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +16,7 @@ export class RegisterComponent {
   maxdate:any= new Date();
   userRegisterOn=false;
   isEditable = false;
-constructor(private formBuilder: FormBuilder, private datePipe: DatePipe, private router:Router,){}
+constructor(private formBuilder: FormBuilder, private datePipe: DatePipe, private router:Router,private registerService: RegisterService){}
 userDataForm = this.formBuilder.group({
   username: ['Efra', Validators.required],
   apellidoPa: ['Juarez', Validators.required],
@@ -66,6 +68,26 @@ register (){
       ...formData1, ...formData2,
     }
     console.log(fullData);
+    this.registerService.login(fullData as registerRequest).subscribe({
+      next: (response)=>{
+        console.log(response);
+        localStorage.setItem('token', response.token);
+      },
+      error: (error)=>{
+        console.log(error);
+      },
+      complete: ()=>{
+        console.info("Complete");
+        this.router.navigateByUrl('/inicio')
+        this.userAccountForm.reset()
+        this.userDataForm.reset()
+
+      }
+  })
+
   }
-}
+    else{
+      console.log("No iniciaste"); 
+    }
+  }
 }
