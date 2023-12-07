@@ -1,20 +1,4 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon"  [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngIf="! userLoginOn" routerLink="/auth/login">
-          <mat-icon>login</mat-icon>
-          <span>Login</span>
-        </button>
-        <button mat-menu-item routerLink="/auth/register">
-          <mat-icon>new_label</mat-icon>
-          <span>register</span>
-        </button>
-        <button mat-menu-item *ngIf="userLoginOn" (click)="onLogout()">
-          <mat-icon>logout</mat-icon>
-          <span>Log out</span>
-        </button>
-      </mat-menu>
-    </button>
-    <span>My App</span>
+  <img class="logo" src="/assets/img/small-logo.png" alt="logo" width="40" />
+    <span style="margin-left: 15px;">Naatik AI Solutions</span>
   </mat-toolbar>

@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './shared/home/home.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

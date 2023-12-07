@@ -1,12 +1,231 @@
 <app-navbar></app-navbar>
-<p *ngIf="! userLoginOn">Usuario no autenticado!</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav">
+   <app-sidenav class="sidenav"></app-sidenav>
+</mat-sidenav>
 
-<p *ngIf="userLoginOn">Usuario autenticado</p>
+
+<mat-sidenav-content>
+  <div class="content mat-elevation-z4">
+    <!-- <p *ngIf="!userLoginOn">Usuario no autenticado!</p>
+
+    <p *ngIf="userLoginOn">Usuario autenticado</p>
+    
+    <div *ngIf="userLoginOn">
+      <p>token: {{ userData?.token }}</p>
+      <p></p>
+    </div> 
+    
+    <button
+      mat-raised-button
+      color="warn"
+      (click)="imprimirValores()"
+    >
+      Warn
+    </button>
+    -->
+    
+    
+      <mat-vertical-stepper [linear]="false" #stepper>
+        <mat-step [stepControl]="clientData">
+          <form [formGroup]="clientData" style="margin-top: 50px;">
+            <div class="flex-group">
+              <mat-form-field >
+                <ng-template matStepLabel>Datos del usuario</ng-template>
+          
+                <mat-label >ID del Cliente</mat-label>
+                <input matInput formControlName="customerID" placeholder="9237-HQITU" />
+              </mat-form-field>
+          
+              <mat-form-field>
+                <mat-label>Sexo</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option value="Male">Masculino</mat-option>
+                  <mat-option value="Female">Femenino</mat-option>
+                </mat-select>
+              </mat-form-field>
+          
+              <mat-form-field>
+                <mat-label>Jubilado</mat-label>
+                <mat-select formControlName="SeniorCitizen">
+                  <mat-option value="1">Si</mat-option>
+                  <mat-option value="0">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label>Partner</mat-label>
+                <mat-select formControlName="Partner">
+                  <mat-option value="Yes">Si</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+          
+              <mat-form-field>
+                <mat-label>Familiares dependientes</mat-label>
+                <mat-select formControlName="Dependents">
+                  <mat-option value="Yes">Si</mat-option>
+                  <mat-option value="No">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+              <mat-form-field>
+                <mat-label>Permanencia</mat-label>
+                <input matInput formControlName="tenure" type="number" />
+              </mat-form-field>
+          
+            </div>
+            <div style="display: flex; justify-content: space-evenly;">
+              <button mat-raised-button color="warn" matStepperNext> Siguiente <mat-icon>navigate_next</mat-icon></button>
+            </div>
+          </form>
+          
+        </mat-step>
+        <mat-step [stepControl]="serviceData">
+          <form [formGroup]="serviceData" style="margin-top: 50px; ">
+            <ng-template matStepLabel>Datos de los servicios</ng-template>
+            <div class="flex-group">
+            <div class="parent">
+            <mat-form-field class="div1">
+              <mat-label>Servicio Telefonico</mat-label>
+              <mat-select formControlName="PhoneService">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="div2">
+              <mat-label>Multiples lineas</mat-label>
+              <mat-select formControlName="MultipleLines">
+                <mat-option value="Yes">Yes</mat-option>
+                <mat-option value="No">No</mat-option>
+                <mat-option value="No phone service">Sin servicio telefonico</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="div3">
+              <mat-label>Servicio de internet </mat-label>
+              <mat-select formControlName="InternetService">
+                <mat-option value="DSL">DSL</mat-option>
+                <mat-option value="Fiber optic">Fibra optica</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="div4">
+              <mat-label>Seguridad en internet </mat-label>
+              <mat-select formControlName="OnlineSecurity">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+                <mat-option value="No internet service">Sin servivio de internet</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="div5">
+              <mat-label>Copias de seguridad</mat-label>
+              <mat-select formControlName="OnlineBackup">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            
+    
+            <mat-form-field class="div6">
+              <mat-label>Dispositivos protegidos</mat-label>
+              <mat-select formControlName="DeviceProtection">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="div7">
+              <mat-label>Soporte tecnico</mat-label>
+              <mat-select formControlName="TechSupport">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="div8">
+              <mat-label>Servicio de Streaming</mat-label>
+              <mat-select formControlName="StreamingTV">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+            <mat-form-field class="div9">
+              <mat-label>Renta de peliculas</mat-label>
+              <mat-select formControlName="StreamingMovies">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+            </div>
+            <div style="display: flex; justify-content: space-evenly;">
+              <button mat-raised-button color="warn" matStepperPrevious>Anterior <mat-icon>navigate_before</mat-icon></button>
+              <button mat-raised-button color="warn" matStepperNext> Siguiente <mat-icon>navigate_next</mat-icon></button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="paymentData">
+          <form [formGroup]="paymentData" style="margin-top: 50px; ">
+            <ng-template matStepLabel>Datos de pago</ng-template>
+    
+    <div class="flex-group">
+            <mat-form-field>
+              <mat-label>Contrato</mat-label>
+              <mat-select formControlName="Contract">
+                <mat-option value="Month-to-month">Mensual</mat-option>
+                <mat-option value="One year">Anual</mat-option>
+                <mat-option value="Two year">Bi-anual</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+              <mat-label>Facturacion electronica</mat-label>
+              <mat-select formControlName="PaperlessBilling">
+                <mat-option value="Yes">Si</mat-option>
+                <mat-option value="No">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+              <mat-label>Metodo de Pago</mat-label>
+              <mat-select formControlName="PaymentMethod">
+                <mat-option value="Electronic check">Cheque electrónico</mat-option>
+                <mat-option value="Mailed check">Cheque enviado por correo</mat-option>
+                <mat-option value="Bank transfer (automatic)">Transferencia bancaria</mat-option>
+                <mat-option value="Credit card (automatic)">Tarjeta de crédito</mat-option>
+              </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+              <mat-label>Cargos mensuales</mat-label>
+                <input type="number" formControlName="MonthlyCharges" matInput value="32" />
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label>Cargos Totales</mat-label>
+                  <input type="number" formControlName="TotalCharges" matInput value="32" />
+                </mat-form-field>
+              </div>
+            <div style="display: flex; justify-content: space-evenly;">
+              <button mat-raised-button color="warn" matStepperPrevious>Anterior <mat-icon>navigate_before</mat-icon></button>
+              <button mat-raised-button color="warn" matStepperNext> Siguiente <mat-icon>navigate_next</mat-icon></button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-vertical-stepper>
+      <div style="display:flex; justify-content: center;align-items: center; margin-top: 20px; flex-direction: column;">
+      <button mat-raised-button color="primary" (click)="imprimirValores()">Predecir <mat-icon>done</mat-icon></button>
+      <h1>{{prediction}}</h1>
+    </div>
+    
+  </div>
 
 
-<div *ngIf="userLoginOn">
-<p>token: {{userData?.token}}</p>
-<p></p>
-</div>
-
-<button mat-raised-button color="warn" (click)="isTokenExpired(userData?.token)">Warn</button>
+</mat-sidenav-content>
+</mat-sidenav-container>

@@ -13,6 +13,9 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -30,7 +33,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatDialogModule,
     MatStepperModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatSidenavModule
   ],
 })
 export class MaterialModule {}
