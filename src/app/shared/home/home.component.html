@@ -7,7 +7,7 @@
 
 <mat-sidenav-content>
   <div class="content mat-elevation-z4">
-    <!-- <p *ngIf="!userLoginOn">Usuario no autenticado!</p>
+<!-- <p *ngIf="!userLoginOn">Usuario no autenticado!</p>
 
     <p *ngIf="userLoginOn">Usuario autenticado</p>
     
@@ -22,11 +22,10 @@
       (click)="imprimirValores()"
     >
       Warn
-    </button>
-    -->
+    </button> -->
     
     
-      <mat-vertical-stepper [linear]="false" #stepper>
+      <mat-vertical-stepper [linear]="true" #stepper>
         <mat-step [stepControl]="clientData">
           <form [formGroup]="clientData" style="margin-top: 50px;">
             <div class="flex-group">

@@ -18,9 +18,9 @@ export class RegisterComponent {
   isEditable = false;
 constructor(private formBuilder: FormBuilder, private datePipe: DatePipe, private router:Router,private registerService: RegisterService){}
 userDataForm = this.formBuilder.group({
-  username: ['Efra', Validators.required],
-  apellidoPa: ['Juarez', Validators.required],
-  apellidoMa: ['Mendoza', Validators.required],
+  username: ['', Validators.required],
+  apellidoPa: ['', Validators.required],
+  apellidoMa: ['', Validators.required],
   fechaNacimiento: ['', Validators.required],
 
 });

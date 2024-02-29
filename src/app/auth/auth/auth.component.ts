@@ -14,9 +14,9 @@ import { slideInAnimation } from 'src/assets/animations/fade.animation';
 export class AuthComponent implements OnInit, OnDestroy {
   
   changingText: string[] = [
-    "Irure labore ipsum consequat minim reprehenderit cupidatat nulla officia velit in excepteur ad.", 
-    "Labore et duis proident officia est dolor anim consequat non velit est non eiusmod tempor.", 
-    "Veniam aute est culpa deserunt aute eiusmod non excepteur duis."
+    "Somos profesionales en el desarrollo y aplicación de Inteligencia Artificial y Ciencia de Datos.",
+    "Enfocados a brindar soluciones a diferentes sectores de industria y servicios.",
+    "Más de 30 años de experiencia en la aplicación de técnicas y metodologías apoyados por científicos y especialistas en diferentes áreas."
   ];
   currentIndex: number = 0;
   currentText: string = '';
